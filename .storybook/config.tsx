@@ -1,11 +1,19 @@
-
-import { setOptions } from "@storybook/addon-options";
-import { addDecorator, configure } from "@storybook/react";
+import { addDecorator, addParameters, configure } from "@storybook/react";
 import themeDecorator from "./theme-decorator";
+import { create } from '@storybook/theming';
 
-setOptions({
-  addonPanelInRight: true,
-  name: "React UI Kit",
+addParameters({
+  options: {
+    theme: create({
+      base: 'light',
+      brandTitle: 'React UI Kit',
+      brandUrl: 'hhttps://leandrooriente.github.io/react-ui-kit-boilerplate',
+      // To control appearance:
+      // brandImage: 'http://url.of/some.svg',
+    }),
+    isFullscreen: false,
+    panelPosition: 'right',
+  },
 });
 
 const req = require.context("../src", true, /.stories.tsx$/);
